@@ -1,3 +1,14 @@
+// ==UserScript==
+// @name         More Buttons
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  Just an extent of buttons for MPP,
+// @author       Tau-Pi-2009
+// @match        https://mppclone.com/*
+// @match        https://multiplayerpiano.com/*
+// @icon         https://www.google.com/s2/favicons?domain=mppclone.com
+// @grant        none
+// ==/UserScript==
 let btn = `<div id="chat-download-btn" class="ugly-button">Chat</div>`;
 
   $("#bottom .relative").append(btn);
