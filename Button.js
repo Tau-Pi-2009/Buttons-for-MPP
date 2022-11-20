@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         More Buttons
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Just an extent of buttons for MPP,
 // @author       Tau-Pi-2009
 // @match        https://mppclone.com/*
@@ -68,5 +68,30 @@ $("#js-btn")
         alert("Error: " + e);
       }
     });
+  $("#bottom .relative").append(`<div id="ban-everyone-btn" class="ugly-button translate">Ban Everyone</div>`);
+    $("#ban-everyone-btn").css(
+    {
+      position: "absolute",
+      left: "900px",
+      top: "4px"
+    }
+  ).on("click", () => {
+    if (confirm("Are you sure you want to do this? This can not be undone!")) {
+      for (var id in MPP.client.ppl) {
+        var part = MPP.client.ppl[id]
+        MPP.client.sendArray(
+          [
+            {
+              m: "kickban",
+              _id: part.id,
+              ms: 0
+            }
+          ]
+        );
+      };
+    } else {
+      alert("That couldn't be executed.")
+    }
+  });
   
 //Import into Console for it to run.
